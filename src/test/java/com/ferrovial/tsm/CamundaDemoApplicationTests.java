@@ -24,9 +24,9 @@ class CamundaDemoApplicationTests {
     public void contextLoads() throws FileNotFoundException {
 
         final Map<String, Object> VARS = new HashMap<>();
-        VARS.put("mode", "Normal");               // or "Mandatory"
+        VARS.put("mode", "Mandatory");               // or "Mandatory"
         VARS.put("currentRatePerMile", 1.10d);
-        VARS.put("requestedIncreasePerMile", 0.45d);
+        VARS.put("requestedIncreasePerMile", 9.0d);
         VARS.put("minutesSinceLastIncrease", 3);
         VARS.put("maxIncreasePerStep", 0.20d);    // X $ per step
         VARS.put("minIntervalMinutes", 5);        // Y minutes
