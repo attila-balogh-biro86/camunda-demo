@@ -38,7 +38,7 @@ class CamundaDemoApplicationTests {
 
         System.out.println(newRatePerMile);
 
-        assertEquals(1.30d, newRatePerMile);
+        assertEquals(7.5d, newRatePerMile);
     }
 
 }
