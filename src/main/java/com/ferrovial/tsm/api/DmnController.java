@@ -30,11 +30,12 @@ public class DmnController {
     @PostMapping(value = "/evaluate-model", consumes = "application/xml")
     public GapCloseEvaluationResult handleXml(InputStream inputStream) throws Exception {
         Map<String, Object> vars = new HashMap<>();
+        Gantry gantry = gapService.getGantry();
         vars.put("maxGapLength", 2); // in minutes
         vars.put("gantryStatus", gapService.getGantry().getStatus().name());
-        vars.put("gapLength", gapService.getGantry().getGap().getGapLength());
+        vars.put("gapLength", gantry.getGap() != null ? gantry.getGap().getGapLength() : 0);
         GapCloseEvaluationResult evaluationResult = businessRuleService.evaluateGapClosingBusinessRule(inputStream,vars);
-        gapService.execute(evaluationResult.getGapOperation(), evaluationResult.getNewRate());
+        gapService.execute(evaluationResult.getGantryOperation(), evaluationResult.getNewRate());
         return evaluationResult;
     }
 }

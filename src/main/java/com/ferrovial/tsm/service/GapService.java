@@ -23,36 +23,38 @@ public class GapService {
         this.gantry = Gantry.builder()
                 .status(GantryStatus.OPEN)
                 .id("gantry-1")
+                .rate(new Rate(5.0))
                 .build();
     }
 
-    public void execute(GapOperation action, Rate rate) {
+    public void execute(GantryOperation action, Rate rate) {
 
         if(gantry.getGap() == null) {
             log.warn("No gap present in gantry {}", gantry.getId());
             return;
         }
         switch (action) {
-            case GapOperation.CLOSE_GAP:
-                closeGapAndOpenGantry(gantry, rate);
+            case GantryOperation.OPEN_GANTRY:
+                openGantry(gantry, rate);
                 break;
-            case GapOperation.LEAVE_OPEN:
-                leaveOpen(gantry);
+            case GantryOperation.CLOSE_GANTRY:
+                closeGantry(gantry);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown action: " + action);
         }
     }
 
-    private void closeGapAndOpenGantry(Gantry gantry, Rate newRate) {
-        log.debug("Closing gap for gantry {} with new rate {}", gantry, newRate);
-        gantry.getGap().setRate(newRate);
+    private void openGantry(Gantry gantry, Rate newRate) {
+        log.debug("Opening gantry {} with new rate {}", gantry, newRate);
+        gantry.setRate(newRate);
         gantry.getGap().setEndTime(LocalDateTime.now());
+        gantry.getGap().setActive(Boolean.FALSE);
         gantry.setStatus(GantryStatus.OPEN);
     }
 
-    private void leaveOpen(Gantry gantry) {
-        log.debug("Leaving gap {} open", gantry);
-        gantry.setStatus(GantryStatus.OPEN);
+    private void closeGantry(Gantry gantry) {
+        log.debug("Closing gantry {}", gantry);
+        gantry.setStatus(GantryStatus.CLOSED);
     }
 }

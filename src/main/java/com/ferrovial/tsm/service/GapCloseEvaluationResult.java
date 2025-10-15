@@ -13,7 +13,7 @@ import lombok.ToString;
 @Setter
 public class GapCloseEvaluationResult {
 
-    private GapOperation gapOperation;
+    private GantryOperation gantryOperation;
     private Rate newRate;
     private String description;
 }

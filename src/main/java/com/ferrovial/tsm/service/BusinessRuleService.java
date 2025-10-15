@@ -12,8 +12,6 @@ import org.springframework.util.ResourceUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 @Service
@@ -46,17 +44,17 @@ public class BusinessRuleService {
         DmnDecisionResult result = DMN_ENGINE.evaluateDecision(decision, vars);
 
         String action = result.getSingleResult().getEntry("action");
-        Double rate = result.getSingleResult().getEntry("rate");
+        Long rate = result.getSingleResult().getEntry("rate");
         String description = result.getSingleResult().getEntry("description");
 
-        log.debug("Gap operation: {}", GapOperation.valueOf(action));
+        log.debug("Gantry operation: {}", GantryOperation.valueOf(action));
         log.debug("New rate: {}", rate);
         log.debug("Description: {}", description);
 
         return GapCloseEvaluationResult.builder()
-                .gapOperation(GapOperation.valueOf(action))
+                .gantryOperation(GantryOperation.valueOf(action))
                 .description(description)
-                .newRate(new Rate(rate))
+                .newRate(rate != null ? new Rate(rate.doubleValue()) : new Rate(0.0))
                 .build();
     }
 

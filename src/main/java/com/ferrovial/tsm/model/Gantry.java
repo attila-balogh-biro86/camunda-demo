@@ -13,4 +13,5 @@ public class Gantry {
     private String id;
     private Gap gap;
     private GantryStatus status;
+    private Rate rate;
 }

@@ -12,6 +12,11 @@
           <text>gapLength</text>
         </inputExpression>
       </input>
+      <input id="input_maxGapLength">
+        <inputExpression id="inputExpression_maxGapLength" typeRef="number">
+          <text>maxGapLength</text>
+        </inputExpression>
+      </input>
       <output id="output_action" name="action" typeRef="string" />
       <output id="output_rate" name="rate" typeRef="number" />
       <output id="output_description" name="description" typeRef="string" />
@@ -22,14 +27,17 @@
         <inputEntry id="inputEntry_1_2">
           <text>&gt; maxGapLength</text>
         </inputEntry>
+        <inputEntry id="inputEntry_1_3">
+          <text>-</text>
+        </inputEntry>
         <outputEntry id="outputEntry_1_1">
-          <text>"CLOSE_GAP"</text>
+          <text>"OPEN_GANTRY"</text>
         </outputEntry>
         <outputEntry id="outputEntry_1_2">
           <text>0</text>
         </outputEntry>
         <outputEntry id="outputEntry_1_3">
-          <text>"Close gap with zero rate"</text>
+          <text>"Open gantry with zero rate"</text>
         </outputEntry>
       </rule>
       <rule id="rule_2">
@@ -39,14 +47,17 @@
         <inputEntry id="inputEntry_2_2">
           <text>&lt;= maxGapLength</text>
         </inputEntry>
+        <inputEntry id="inputEntry_2_3">
+          <text>-</text>
+        </inputEntry>
         <outputEntry id="outputEntry_2_1">
-          <text>"LEAVE_OPEN"</text>
+          <text>"CLOSE_GANTRY"</text>
         </outputEntry>
         <outputEntry id="outputEntry_2_2">
           <text>null</text>
         </outputEntry>
         <outputEntry id="outputEntry_2_3">
-          <text>"Keep gap open, waiting for next rate"</text>
+          <text>"Keep gantry closed, waiting for next rate"</text>
         </outputEntry>
       </rule>
       <rule id="rule_3">
@@ -56,8 +67,11 @@
         <inputEntry id="inputEntry_3_2">
           <text>-</text>
         </inputEntry>
+        <inputEntry id="inputEntry_3_3">
+          <text>-</text>
+        </inputEntry>
         <outputEntry id="outputEntry_3_1">
-          <text>"LEAVE_OPEN"</text>
+          <text>"OPEN_GANTRY"</text>
         </outputEntry>
         <outputEntry id="outputEntry_3_2">
           <text>null</text>
@@ -73,8 +87,11 @@
         <inputEntry id="inputEntry_4_2">
           <text>-</text>
         </inputEntry>
+        <inputEntry id="inputEntry_4_3">
+          <text>-</text>
+        </inputEntry>
         <outputEntry id="outputEntry_4_1">
-          <text>"LEAVE_OPEN"</text>
+          <text>"OPEN_GANTRY"</text>
         </outputEntry>
         <outputEntry id="outputEntry_4_2">
           <text>null</text>
