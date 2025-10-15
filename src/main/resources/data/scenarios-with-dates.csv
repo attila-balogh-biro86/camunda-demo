@@ -1,4 +1,0 @@
-mode,now,currentRatePerMile,requestedIncreasePerMile,minutesSinceLastIncrease,segmentCap,segmentLengthMiles
-Normal,2025-08-27,1.10,0.45,3,24.0,3.2
-Mandatory,2025-08-27,1.10,0.45,3,24.0,3.2
-Normal,2025-10-02,1.10,0.45,3,24.0,3.2
