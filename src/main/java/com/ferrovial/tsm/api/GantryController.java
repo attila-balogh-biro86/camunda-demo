@@ -26,6 +26,11 @@ public class GantryController {
         return gapService.getGantry();
     }
 
+    @GetMapping("/gantry/reset")
+    public void resetGantry() {
+        gapService.resetGantry();
+    }
+
     @GetMapping("/createGap")
     public String createGap() {
         Gap gap = Gap.builder()

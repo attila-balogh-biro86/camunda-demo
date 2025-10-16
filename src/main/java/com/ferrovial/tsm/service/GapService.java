@@ -27,6 +27,10 @@ public class GapService {
                 .build();
     }
 
+    public void resetGantry() {
+        init();
+    }
+
     public void execute(GantryOperation action, Rate rate) {
 
         if(gantry.getGap() == null) {
